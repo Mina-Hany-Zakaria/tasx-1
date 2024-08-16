@@ -1,0 +1,57 @@
+<!-- !============= TASK-1 (1) ==========  -->
+<section class="mt-5">
+  <div class="">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label"
+        >Enter Your Username</label
+      >
+      <div class="d-flex">
+        <input
+          type="test"
+          class="form-control"
+          id="exampleInputEmail1"
+          [(ngModel)]="username"
+        />
+        <button
+          [disabled]="username == ''"
+          (click)="resetInputValue()"
+          class="btn btn-primary mx-2"
+        >
+          Reset
+        </button>
+      </div>
+
+      <div>
+        <p>
+          <strong>your username is :</strong>
+          {{ username }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="my-5" />
+
+<!-- !============= TASK-1 (2) ==========  -->
+<section>
+  <button class="btn btn-primary" (click)="toggleParaDisplay()">
+    Display Details
+  </button>
+  @if (!paraContent) {
+  <p class="bg-primary text-white p-3 my-2 text-center">
+    Secret Password = tuna
+  </p>
+  } @for (msg of msgLogs; track $index) {
+  <p
+    class="d-flex justify-content-between align-items-center"
+    [ngClass]="{ 'text-color-white': $index + 1 >= 5 }"
+    [ngStyle]="{ backgroundColor: $index + 1 >= 5 ? 'green' : '' }"
+  >
+    <span>{{ $index + 1 }}</span>
+    <span class="mx-2">{{ msg }}</span>
+    <!-- #======== addition ====> -->
+    <button class="btn btn-danger" (click)="deleteItem($index)">X</button>
+  </p>
+  }
+</section>
